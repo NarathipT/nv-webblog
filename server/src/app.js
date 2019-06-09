@@ -1,6 +1,8 @@
 let express = require('express')
 let bodyParser = require('body-parser')
 
+const {sequelize} = require('./models')
+const config = require('./config/config')
 const app = express()
 
 app.use(bodyParser.json())
@@ -23,8 +25,11 @@ app.post('/hello', function(req, res){
     res.send('Ok you post - ' + req.body.name)
 })
 
-let port = 8080
+let port = process.env.PORT || config.port
 
-app.listen(port, function(){
-    console.log('Server running on ' + port)
+sequelize.sync({force: false}).then(() => {
+    app.listen(port, function(){
+        console.log('Server running on ' + port)
 })
+})
+    
