@@ -1,13 +1,7 @@
 {
-<<<<<<< HEAD
-  "name": "nv-webblog-client",
-  "version": "1.0.0",
-  "description": "nodejs wuejs webblog client",
-=======
   "name": "nv-weblog-client",
   "version": "1.0.0",
   "description": "A Vue.js project",
->>>>>>> origin/master
   "author": "Narathip.Th <tapong.narathip@gmail.com>",
   "private": true,
   "scripts": {
