@@ -27,7 +27,11 @@ export default {
         }
     },
     async created() {
-        this.users = (await UserService.index()).data
+        try{
+            this.users = (await UserService.index()).data
+        }catch(err){
+            console.log(err)
+        }
     },
     methods: {
         navigateTo (route){
