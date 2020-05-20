@@ -24,7 +24,13 @@ export default {
                     email: this.email,
                     password: this.password
                 })
-                console.log(response)
+
+                this.$store.dispatch('setToken', response.data.token)
+                this.$store.dispatch('setUser', response.data.user)
+
+                this.$router.push({
+                    name: 'users'
+                })
             }catch(error){
                 console.log(error)
             }
