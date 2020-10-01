@@ -1,5 +1,6 @@
 <template>
     <div>
+        <p><button v-on:click="logout">Logout</button></p>
         <h2>Get All Users</h2>
         <h4>จำนวนผู้ใช้งาน {{users.length}}</h4>
         <div v-for="user in users" v-bind:key="user.id">
@@ -36,8 +37,16 @@ export default {
     methods: {
         navigateTo (route){
             this.$router.push(route)
+        },
+        logout(){
+            this.$store.dispatch('setToken', null)
+            this.$store.dispatch('setUser', null)
+            this.$router.push({
+                name: 'login'
+            })
         }
     },
+    
 }
 </script>
 <style scoped>
