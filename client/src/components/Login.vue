@@ -15,35 +15,36 @@
     }
 </style>
 <script>
-import AuthenService from '@/services/AuthenService'
-export default {
-    data(){
-        return{
-            email:'',
-            password:''
-        }
-    },
-    methods:{
-        async onLogin(){
-            try{
-                const response = await AuthenService.login({
-                    email: this.email,
-                    password: this.password
-                })
+    import AuthenService from '@/services/AuthenService'
+    export default {
+        data(){
+            return{
+                error:'',
+                email:'',
+                password:''
+            }
+        },
+        methods:{
+            async onLogin(){
+                try{
+                    const response = await AuthenService.login({
+                        email: this.email,
+                        password: this.password
+                    })
 
-                this.$store.dispatch('setToken', response.data.token)
-                this.$store.dispatch('setUser', response.data.user)
+                    this.$store.dispatch('setToken', response.data.token)
+                    this.$store.dispatch('setUser', response.data.user)
 
-                this.$router.push({
-                    name: 'users'
-                })
-            }catch(error){
-                console.log(error)
-                this.error = error.response.data.error
-                this.email = ''
-                this.password = ''
+                    this.$router.push({
+                        name: 'users'
+                    })
+                }catch(err){
+                    console.log(err)
+                    this.error = err.response.data.error
+                    this.email = ''
+                    this.password = ''
+                }
             }
         }
     }
-}
 </script>

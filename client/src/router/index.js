@@ -69,7 +69,7 @@ export default new Router({
     },
     {
       path: '/blog/create',
-      name: 'blog-edit',
+      name: 'blog-create',
       component: BlogCreate
     },
     //comment
